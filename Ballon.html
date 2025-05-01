@@ -11,9 +11,9 @@
     </style>
 </head>
 <body>
-	<!--<div id="loader">
+	<div id="loader">
   <img src="models/zainart-logo.gif" alt="Loading..." />
-</div>-->
+</div>
 <model-viewer src="models/Ballon.glb"  ios-src="models/Ballon.usdz"  camera-controls touch-action="pan-y" autoplay ar ar-modes=" scene-viewer webxr quick-look" 
    camera-controls 
         auto-rotate scale="0.2 0.2 0.2" shadow-intensity="1">
@@ -193,7 +193,12 @@ max-height:100% !important
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
     <script>
-	   
+	     document.addEventListener("DOMContentLoaded", () => {
+    const modelViewer = document.getElementById('model-viewer');
+    modelViewer.addEventListener('load', () => {
+     $(loader).remove();
+    });
+  });
 	   var audio = document.getElementById('ar-model-audio');
 	    var araudio = document.getElementById('ar-model-audio');
 	    var fraudio = document.getElementById('fr-model-audio');
