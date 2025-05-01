@@ -186,13 +186,13 @@ max-height:100% !important
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
     <script>
-	    const loader = document.getElementById('loader');
-  const modelViewer = document.getElementById('model-viewer');
-
-  // When the model finishes loading, hide the loader
-  modelViewer.addEventListener('load', () => {
-    loader.style.display = 'none';
+	      document.addEventListener("DOMContentLoaded", () => {
+    const modelViewer = document.getElementById('modelViewer');
+    modelViewer.addEventListener('load', () => {
+      console.log('Modèle chargé !');
+    });
   });
+	    
 	    var audiotype = "ar";
 	    var audio = document.getElementById('ar-model-audio');
 	    var araudio = document.getElementById('ar-model-audio');
