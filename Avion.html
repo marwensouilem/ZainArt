@@ -30,7 +30,7 @@
 	    <button id="fr-sound" class="lang-buttons">
 		 <img src="models/france.png"  />
 	    </button>
-	    <button id="fr-sound" class="lang-buttons">
+	    <button id="en-sound" class="lang-buttons">
 		 <img src="models/English.png"  />
 	    </button>
     </div>
@@ -178,13 +178,33 @@ max-height:100% !important
 	    var audio = document.getElementById('ar-model-audio');
 	    var araudio = document.getElementById('ar-model-audio');
 	    var fraudio = document.getElementById('fr-model-audio');
+	    var enaudio = document.getElementById('en-model-audio');
 		   $("#fr-sound").click(function(){
 			    audio.pause();
-			 audio = fraudio
+			   
+			 audio = fraudio;
+			   audio.currentTime = 0
+			    $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
 		   });
 	     $("#ar-sound").click(function(){
 		      audio.pause();
-			 audio = araudio
+		     
+			 audio = araudio;
+		     audio.currentTime = 0
+		      $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
+		   });
+	      $("#en-sound").click(function(){
+		      audio.pause();
+		     
+			 audio = enaudio;
+		     audio.currentTime = 0
+		      $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
 		   });
 	    $('#pauseAudio').click(function(){
 		    $('#pauseAudio').hide()
