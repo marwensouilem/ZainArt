@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprentissage de l'Alphabet en AR</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f4; }
+        model-viewer { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+	<div id="loader">
+  <img src="models/zainart-logo.gif" alt="Loading..." />
+</div>
+<model-viewer id="model-viewer" src="models/Loup.glb"  ios-src="models/Loup.usdz" animation-name="03_creep" camera-controls touch-action="pan-y" autoplay ar ar-modes=" scene-viewer webxr quick-look" 
+   camera-controls 
+        auto-rotate scale="0.2 0.2 0.2" shadow-intensity="1">
+  <audio id="fr-model-audio" src="models/Sounds/Ballon-fr.mp3"></audio>
+  <audio id="ar-model-audio" src="models/Sounds/Ballon-ar.mp3"></audio>
+<audio id="en-model-audio" src="models/Sounds/Ballon-en.mp3"></audio>
+
+   <div style="position:absolute;top:20px;width:60px">
+	    <button id="playAudio" class="lang-buttons">
+		<img src="models/play_button.png.webp"  />
+	    </button>
+	    <button id="pauseAudio" class="lang-buttons" style="display:none">
+		<img src="models/pause_button.png.webp" />
+	    </button>
+	    <button id="ar-sound" class="lang-buttons">
+		 <img src="models/tunisia.png"  />
+	    </button>
+	    <button id="fr-sound" class="lang-buttons">
+		 <img src="models/france.png"  />
+	    </button>
+	    <button id="en-sound" class="lang-buttons">
+		 <img src="models/English.png"  />
+	    </button>
+    </div>
+  <button slot="ar-button" id="ar-button" >
+    View in your space
+  </button>
+	    
+ </div>
+  <button slot="ar-button" id="ar-button">
+    View in your space
+  </button>
+  
+ 
+
+  <button id="ar-failure">
+    AR is not tracking!
+  </button>
+
+  
+  </div>
+</model-viewer>
+
+
+
+<style>
+
+
+
+
+
+ #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:#6052a7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+#logo{
+position : absolute;
+	bottom:0;
+}
+.lang-buttons{
+    padding: 0;
+    margin-left: 5px;
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    border-radius: 50%;
+    border: 4px solid #dad7dc;
+}
+	.lang-buttons > img{
+	    width: 62px !important;
+    height: 62px  !important;
+	}
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+body{
+max-height:100% !important
+}
+  model-viewer {
+    background-color: #eee;
+    overflow-x: hidden;
+      height:100% !important
+  }
+
+  #ar-button {
+    background-image: url(../../assets/ic_view_in_ar_new_googblue_48dp.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 132px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color:#4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+  }
+
+  #ar-button:active {
+    background-color: #E8EAED;
+  }
+
+  #ar-button:focus {
+    outline: none;
+  }
+
+  #ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+
+  @keyframes circle {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @keyframes elongate {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+  }
+
+  model-viewer > #ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+  }
+
+  model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+  }
+
+  model-viewer > #ar-prompt > img {
+    animation: circle 4s linear infinite;
+  }
+
+  model-viewer > #ar-failure {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 175px;
+    display: none;
+  }
+
+  model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+    display: block;
+  }
+
+
+</style>
+ 
+        
+        <!-- 📢 Bouton pour activer AR -->
+      
+    
+ <div id="logo">
+  <img src="models/zainartlogo (1).png" alt="Loading..." />
+</div>
+
+    
+     <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+    <script>
+	     document.addEventListener("DOMContentLoaded", () => {
+    const modelViewer = document.getElementById('model-viewer');
+    modelViewer.addEventListener('load', () => {
+     $(loader).remove();
+    });
+  });
+	   var audio = document.getElementById('ar-model-audio');
+	    var araudio = document.getElementById('ar-model-audio');
+	    var fraudio = document.getElementById('fr-model-audio');
+	    var enaudio = document.getElementById('en-model-audio');
+		   $("#fr-sound").click(function(){
+			    audio.pause();
+			   
+			 audio = fraudio;
+			   audio.currentTime = 0
+			    $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
+		   });
+	     $("#ar-sound").click(function(){
+		      audio.pause();
+		     
+			 audio = araudio;
+		     audio.currentTime = 0
+		      $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
+		   });
+	      $("#en-sound").click(function(){
+		      audio.pause();
+		     
+			 audio = enaudio;
+		     audio.currentTime = 0
+		      $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
+		   });
+	    $('#pauseAudio').click(function(){
+		    $('#pauseAudio').hide()
+		    $('#playAudio').show()
+  		audio.pause();
+		    
+	    });
+	     $('#playAudio').click(function(){
+		     $('#playAudio').hide();
+		      $('#pauseAudio').show()
+  		audio.play();
+		   
+	    });
+    var pause = document.querySelector('#pauseAudio');
+var play = document.querySelector('#playAudio');
+var btn = document.querySelector('#app');
+audio.play();
+      
+
+$(audio).on('ended', function() {
+    $('#pauseAudio').hide()
+		    $('#playAudio').show()
+   // enable button/link
+});
+
+      
+    </script>
+   
+
+</body>
+</html>
