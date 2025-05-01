@@ -14,7 +14,7 @@
 	 <div id="loader">
   <img src="models/zainartlogo.gif" alt="Loading..." />
 </div>
-<model-viewer src="models/Avion.glb"  ios-src="models/Avion.usdz"   autoplay ar ar-modes=" scene-viewer webxr quick-look" 
+<model-viewer id="model-viewer" src="models/Avion.glb"  ios-src="models/Avion.usdz"   autoplay ar ar-modes=" scene-viewer webxr quick-look" 
        ar-placement="floor" auto-rotate  shadow-intensity="1">
   <audio id="fr-model-audio" src="models/Sounds/Avion-fr.mp3"></audio>
   <audio id="ar-model-audio" src="models/Sounds/Avion-ar.mp3"></audio>
@@ -187,7 +187,7 @@ max-height:100% !important
   crossorigin="anonymous"></script>
     <script>
 	      document.addEventListener("DOMContentLoaded", () => {
-    const modelViewer = document.getElementById('modelViewer');
+    const modelViewer = document.getElementById('model-viewer');
     modelViewer.addEventListener('load', () => {
       console.log('Modèle chargé !');
     });
