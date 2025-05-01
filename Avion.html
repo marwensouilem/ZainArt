@@ -177,7 +177,9 @@ max-height:100% !important
         
         <!-- 📢 Bouton pour activer AR -->
       
-    
+     <div id="logo">
+  <img src="models/zainartlogo.png" alt="Loading..." />
+</div>
 
 
     
@@ -189,7 +191,7 @@ max-height:100% !important
 	      document.addEventListener("DOMContentLoaded", () => {
     const modelViewer = document.getElementById('model-viewer');
     modelViewer.addEventListener('load', () => {
-      loader.style.display = 'none';
+     $(loader).remove();
     });
   });
 	    
