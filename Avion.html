@@ -14,8 +14,10 @@
 	 <!--<div id="loader">
   <img src="models/zainart-logo.gif" alt="Loading..." />
 </div>-->
-<model-viewer id="model-viewer" src="models/Avion.glb"  ios-src="models/Avion.usdz"   autoplay ar ar-modes=" scene-viewer webxr quick-look" 
-        auto-rotate  shadow-intensity="1">
+	
+<model-viewer id="model-viewer" src="models/Avion.glb"  ios-src="models/Avion.usdz"    camera-controls touch-action="pan-y" autoplay ar ar-modes=" scene-viewer webxr quick-look" 
+   camera-controls 
+        auto-rotate scale="0.2 0.2 0.2" shadow-intensity="1">
   <audio id="fr-model-audio" src="models/Sounds/Avion-fr.mp3"></audio>
   <audio id="ar-model-audio" src="models/Sounds/Avion-ar.mp3"></audio>
 <audio id="en-model-audio" src="models/Sounds/Avion-en.mp3"></audio>
