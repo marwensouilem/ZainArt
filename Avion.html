@@ -11,9 +11,9 @@
     </style>
 </head>
 <body>
-	 <!--<div id="loader">
+	 <div id="loader">
   <img src="models/zainart-logo.gif" alt="Loading..." />
-</div>-->
+</div>
 	
 <model-viewer id="model-viewer" src="models/Avion.glb"  ios-src="models/Avion.usdz"    camera-controls touch-action="pan-y" autoplay ar ar-modes=" scene-viewer webxr quick-look" 
    camera-controls 
@@ -183,6 +183,9 @@ position : absolute;
         <!-- 📢 Bouton pour activer AR -->
       
     
+<div id="logo">
+  <img src="models/zainartlogo (1).png" alt="Loading..." />
+</div>
 
 
     
@@ -191,12 +194,12 @@ position : absolute;
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
     <script>
-	   /*   document.addEventListener("DOMContentLoaded", () => {
+	     document.addEventListener("DOMContentLoaded", () => {
     const modelViewer = document.getElementById('model-viewer');
     modelViewer.addEventListener('load', () => {
      $(loader).remove();
     });
-  });*/
+  });
 	    
 	    var audiotype = "ar";
 	    var audio = document.getElementById('ar-model-audio');
