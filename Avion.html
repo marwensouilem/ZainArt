@@ -11,6 +11,9 @@
     </style>
 </head>
 <body>
+	 <div id="loader">
+  <img src="models/zainartlogo.gif" alt="Loading..." />
+</div>
 <model-viewer src="models/Avion.glb"  ios-src="models/Avion.usdz"   autoplay ar ar-modes=" scene-viewer webxr quick-look" 
        ar-placement="floor" auto-rotate  shadow-intensity="1">
   <audio id="fr-model-audio" src="models/Sounds/Avion-fr.mp3"></audio>
@@ -31,7 +34,7 @@
 		 <img src="models/france.png"  />
 	    </button>
 	    <button id="en-sound" class="lang-buttons">
-		 <img src="models/English.png"  />
+		 <img src="models/flag-eng.png"  />
 	    </button>
     </div>
   <button slot="ar-button" id="ar-button" >
@@ -58,7 +61,16 @@
 <style>
 
 
-
+   #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
 
 
 
@@ -174,6 +186,13 @@ max-height:100% !important
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
     <script>
+	    const loader = document.getElementById('loader');
+  const modelViewer = document.getElementById('modelViewer');
+
+  // When the model finishes loading, hide the loader
+  modelViewer.addEventListener('load', () => {
+    loader.style.display = 'none';
+  });
 	    var audiotype = "ar";
 	    var audio = document.getElementById('ar-model-audio');
 	    var araudio = document.getElementById('ar-model-audio');
